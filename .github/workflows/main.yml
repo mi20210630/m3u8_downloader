@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - name: Get Download Tool
+      - name: Get Download Tool and Download
         run: |
           curl https://hub.njuu.cf/nilaoda/N_m3u8DL-CLI/releases/download/3.0.2/N_m3u8DL-CLI_v3.0.2_with_ffmpeg_and_SimpleG.zip
           unzip N_m3u8DL-CLI_v3.0.2_with_ffmpeg_and_SimpleG.zip
@@ -18,7 +18,7 @@ jobs:
       - name: Upload Video
         uses: ncipollo/release-action@v1.8.0
         with:
-          artifacts: "${{ github.workspace }}/Tool-SGSI-build/upload_ab/*,${{ github.workspace }}/Tool-SGSI-build/upload_aonly/*"
-          tag: "${{ github.event.inputs.REPACK_NAME }}_${{ env.BUILD_TIME }}"
-          bodyFile: "${{ github.workspace }}/Tool-SGSI-build/SGSI/build_info.txt"
+          artifacts: "N_m3u8DL-CLI_v3.0.2_with_ffmpeg_and_SimpleG/Downloads/*"
+          tag: "${{ env.BUILD_TIME }}"
+          bodyFile: "mi20210630"
           token: ${{ secrets.GITHUB_TOKEN }}
