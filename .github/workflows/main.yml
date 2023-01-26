@@ -11,14 +11,16 @@ jobs:
     steps:
       - name: Get Download Tool and Download
         run: |
-          wget https://github.com/nilaoda/N_m3u8DL-CLI/releases/download/3.0.2/N_m3u8DL-CLI_v3.0.2_with_ffmpeg_and_SimpleG.zip
+          unzip wget.zip
+          cd wget
+          ./wget https://github.com/nilaoda/N_m3u8DL-CLI/releases/download/3.0.2/N_m3u8DL-CLI_v3.0.2_with_ffmpeg_and_SimpleG.zip
           unzip N_m3u8DL-CLI_v3.0.2_with_ffmpeg_and_SimpleG.zip
           cd N_m3u8DL-CLI_v3.0.2_with_ffmpeg_and_SimpleG
           ./N_m3u8DL-CLI_v3.0.2.exe ${{ github.event.inputs.M3U8_URL }}
       - name: Upload Video
         uses: ncipollo/release-action@v1.8.0
         with:
-          artifacts: "N_m3u8DL-CLI_v3.0.2_with_ffmpeg_and_SimpleG/Downloads/*"
+          artifacts: "wget/N_m3u8DL-CLI_v3.0.2_with_ffmpeg_and_SimpleG/Downloads/*"
           tag: "${{ env.BUILD_TIME }}"
           bodyFile: "bodyfile.txt"
           token: ${{ secrets.GITHUB_TOKEN }}
