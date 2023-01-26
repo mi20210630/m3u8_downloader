@@ -20,5 +20,5 @@ jobs:
         with:
           artifacts: "N_m3u8DL-CLI_v3.0.2_with_ffmpeg_and_SimpleG/Downloads/*"
           tag: "${{ env.BUILD_TIME }}"
-          bodyFile: "mi20210630"
+          bodyFile: "bodyfile.txt"
           token: ${{ secrets.GITHUB_TOKEN }}
